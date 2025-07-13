@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Face Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Welcome Screen -->
+    <section id="welcomeScreen" class="screen active">
+      <h1>Welcome to Face Analyzer</h1>
+      <p>Discover what your face reveals about your personality!</p>
+      <button onclick="goToScreen('infoScreen')">Get Started</button>
+    </section>
+
+    <!-- Info Screen -->
+    <section id="infoScreen" class="screen">
+      <h2>How It Works</h2>
+      <ul class="info-list">
+        <li>📷 Upload or click your photo</li>
+        <li>🧠 AI analyzes your face</li>
+        <li>📊 Get 8–10 personality insights</li>
+        <li>🚫 If non-face image, it will warn!</li>
+      </ul>
+      <button onclick="goToScreen('uploadScreen')">Next</button>
+      <button onclick="goToScreen('welcomeScreen')" class="back-button">Back</button>
+    </section>
+
+    <!-- Upload Screen -->
+    <section id="uploadScreen" class="screen">
+      <h2>Upload or Take a Photo</h2>
+      <input type="file" accept="image/*" id="photoInput">
+      <button onclick="openCamera()">Use Camera</button>
+      <div id="cameraContainer">
+        <video id="cameraFeed" autoplay playsinline></video>
+        <button onclick="capturePhoto()">Capture</button>
+      </div>
+      <div id="previewContainer"></div>
+      <button onclick="analyzePhoto()">Analyze</button>
+      <button onclick="goToScreen('infoScreen')" class="back-button">Back</button>
+    </section>
+
+    <!-- Loading Screen -->
+    <section id="loadingScreen" class="screen">
+      <h2>Analyzing with AI...</h2>
+      <div class="loader"></div>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="resultScreen" class="screen">
+      <h2>Analysis Result</h2>
+      <div id="resultImage"></div>
+      <div id="resultText"></div>
+      <div class="result-features">
+        <p>🌟 Accuracy Score: <span id="accuracyScore"></span>%</p>
+        <p>📅 Day Prediction: <span id="dayPrediction"></span></p>
+      </div>
+      <div class="ad-box">[Ad Placeholder]</div>
+      <button onclick="shareResult()">Share Result</button>
+      <button onclick="goToScreen('uploadScreen')">Try Again</button>
+      <button onclick="goToScreen('uploadScreen')" class="back-button">Back</button>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Face Analyzer | For Fun Only</p>
+    </footer>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
